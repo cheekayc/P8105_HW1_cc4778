@@ -1,0 +1,7 @@
+---
+title: "P8105_HW1_cc4778"
+author: "Chee Kay Cheong"
+date: "2022-09-19"
+output: github_document
+---
+
