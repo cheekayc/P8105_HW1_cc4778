@@ -5,3 +5,8 @@ date: "2022-09-19"
 output: github_document
 ---
 
+```{r load penguin}
+data("penguins", package = "palmerpenguins")
+```
+
+
