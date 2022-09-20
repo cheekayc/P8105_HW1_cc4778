@@ -5,8 +5,42 @@ date: "2022-09-19"
 output: github_document
 ---
 
-```{r load penguin}
+# Problem 1
+```{r load penguin, echo = FALSE}
 data("penguins", package = "palmerpenguins")
 ```
 
+The `penguins` dataset consists of `r ncol(penguins)` variables and `r nrow(penguins)` observations.
 
+The variables name and their corresponding types are listed as below:
+
+1. `species` : Factor with 3 levels 
+   * Adelie
+   * Chinstrap
+   * Gentoo
+  
+2. `island` : Factor with 3 levels
+   * Biscoe
+   * Dream
+   * Torgersen
+  
+3. `bill_length_mm` : numeric values
+
+4. `bill_depth_mm` : numeric values
+
+5. `flipper_length_mm` : integers
+
+6. `body_mass_g` : integers
+
+7. `sex` : Factor with 2 levels
+    * Female
+    * Male
+  
+8. `Year` : Integers
+
+
+```{r mean flipper length, echo = FALSE}
+mean_flip = mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+The mean flipper length (in mm) of the sampled penguin population is `r round(mean_flip, digits = 2)`.
