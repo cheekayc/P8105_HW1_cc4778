@@ -10,8 +10,11 @@ library(tidyverse)
 ```
 
 # Problem 1
+
+This is a preview of the `penguins` dataset.
 ```{r load penguin, echo = FALSE}
 data("penguins", package = "palmerpenguins")
+head(penguins, 10)
 ```
 
 #### A short description of the `penguins` dataset
@@ -39,7 +42,6 @@ The variables name and their corresponding types are listed as below:
 ```{r mean flipper length, echo = FALSE}
 mean_flip = mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
-
     * The mean flipper length (in mm) of the sampled penguin population is `r round(mean_flip, digits = 2)`.
 
 6. `body_mass_g` : integers
@@ -64,6 +66,19 @@ ggsave("Scatterplot.pdf", height = 6, width = 10)
 
 
 # Problem 2
+
+#### Creating a data frame
+
+```{r data frame}
+df = tibble(
+  time_min = rnorm(10),
+  on_time = time_min > 0,
+  zone = c("A", "B", "C", "D", "E", "A", "B", "C", "D", "E"),
+  color = factor(c("Green","Red","Yellow","Yellow","Yellow","Red","Green","Red","Yellow","Green"))
+)
+head(df, 10)
+```
+
 
 
 
