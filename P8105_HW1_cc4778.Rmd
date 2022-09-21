@@ -5,10 +5,16 @@ date: "2022-09-19"
 output: github_document
 ---
 
+```{r, include = FALSE}
+library(tidyverse)
+```
+
 # Problem 1
 ```{r load penguin, echo = FALSE}
 data("penguins", package = "palmerpenguins")
 ```
+
+#### A short description of the `penguins` dataset
 
 The `penguins` dataset consists of `r ncol(penguins)` variables and `r nrow(penguins)` observations.
 
@@ -30,6 +36,12 @@ The variables name and their corresponding types are listed as below:
 
 5. `flipper_length_mm` : integers
 
+```{r mean flipper length, echo = FALSE}
+mean_flip = mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+    * The mean flipper length (in mm) of the sampled penguin population is `r round(mean_flip, digits = 2)`.
+
 6. `body_mass_g` : integers
 
 7. `sex` : Factor with 2 levels
@@ -39,8 +51,19 @@ The variables name and their corresponding types are listed as below:
 8. `Year` : Integers
 
 
-```{r mean flipper length, echo = FALSE}
-mean_flip = mean(penguins$flipper_length_mm, na.rm = TRUE)
+#### Scatterplot
+
+This is a scatterplot of flipper length versus bill length by the three groups of species.
+
+```{r scatterplot, warning =  FALSE}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+```{r save graph, echo = FALSE, warning = FALSE}
+ggsave("Scatterplot.pdf", height = 6, width = 10)
 ```
 
-The mean flipper length (in mm) of the sampled penguin population is `r round(mean_flip, digits = 2)`.
+
+# Problem 2
+
+
+
