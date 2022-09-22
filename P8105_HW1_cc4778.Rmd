@@ -6,12 +6,13 @@ output: github_document
 ---
 
 ```{r, include = FALSE}
-library(tidyverse)
+library(tidyverse) 
 ```
 
 # Problem 1
 
 This is a preview of the `penguins` dataset.
+
 ```{r load penguin, echo = FALSE}
 data("penguins", package = "palmerpenguins")
 head(penguins, 10)
@@ -60,7 +61,9 @@ This is a scatterplot of flipper length versus bill length by the three groups o
 ```{r scatterplot, warning =  FALSE}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 ```
-```{r save graph, echo = FALSE, warning = FALSE}
+
+I am exporting an image of this scatterplot as a pdf file and save it in my Rproject folder.
+```{r save graph, eval = FALSE, warning = FALSE}
 ggsave("Scatterplot.pdf", height = 6, width = 10)
 ```
 
@@ -78,6 +81,37 @@ df = tibble(
 )
 head(df, 10)
 ```
+
+#### Taking the mean of each variable
+
+```{r variables mean, warning = FALSE}
+mean_time = mean(pull(df, time_min))
+mean_ontime = mean(pull(df, on_time))
+mean_zone = mean(pull(df, zone))
+mean_color = mean(pull(df, color))
+```
+
+* The mean of the variable `time_min` is `r round(mean_time, digits = 2)`.
+* The mean of the variable `on_time` is `r mean(mean_ontime)`.
+* The mean of the variable `zone` is `r mean(mean_zone)`.
+* The mean of the variable `color` is `r mean(mean_color)`.
+
+Therefore, we know that we can take the means of a numeric variable and a logical vector, but not of a factor vector or a character vector.
+
+
+#### Converting variables from one type to another
+
+```{r convert, eval = FALSE}
+as.numeric(df$on_time)
+as.numeric(df$zone)
+as.numeric(df$color)
+```
+
+1. In R, for a logical vector, `TRUE` is considered as 1 and `FALSE` is considered as 0. Hence, we can take a mean value of a logical vector. When we convert a logical vector into a numeric vector, it will return as '1' or '0' as well. 
+
+2. Because the variable `zone` are made up of alphabet characters, when we try to convert it to numeric, it will return `NA`.
+
+3. The factor vector has been converted to [1,2,3] three different numeric vectors as originally the factor vector has three levels. The default ordering of the factor vector is alphabetical. Those with lower alphabetical order will be assigned as '1', and so on.
 
 
 
