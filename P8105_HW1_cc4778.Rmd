@@ -24,34 +24,34 @@ The `penguins` dataset consists of `r ncol(penguins)` variables and `r nrow(peng
 
 The variables name and their corresponding types are listed as below:
 
-1. `species` : Factor with 3 levels 
+1. `species` : Factor vector with 3 levels 
    * Adelie
    * Chinstrap
    * Gentoo
   
-2. `island` : Factor with 3 levels
+2. `island` : Factor vector with 3 levels
    * Biscoe
    * Dream
    * Torgersen
   
-3. `bill_length_mm` : numeric values
+3. `bill_length_mm` : Double, numeric vector
 
-4. `bill_depth_mm` : numeric values
+4. `bill_depth_mm` : Double, numeric vector
 
-5. `flipper_length_mm` : integers
+5. `flipper_length_mm` : Integers, numeric vector 
 
 ```{r mean flipper length, echo = FALSE}
 mean_flip = mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
     * The mean flipper length (in mm) of the sampled penguin population is `r round(mean_flip, digits = 2)`.
 
-6. `body_mass_g` : integers
+6. `body_mass_g` : Integers, numeric vector
 
-7. `sex` : Factor with 2 levels
+7. `sex` : Factor vector with 2 levels
     * Female
     * Male
   
-8. `Year` : Integers
+8. `Year` : Integers, numeric vector
 
 
 #### Scatterplot
@@ -79,7 +79,6 @@ df = tibble(
   zone = c("A", "B", "C", "D", "E", "A", "B", "C", "D", "E"),
   color = factor(c("Green","Red","Yellow","Yellow","Yellow","Red","Green","Red","Yellow","Green"))
 )
-head(df, 10)
 ```
 
 #### Taking the mean of each variable
@@ -96,12 +95,12 @@ mean_color = mean(pull(df, color))
 * The mean of the variable `zone` is `r mean(mean_zone)`.
 * The mean of the variable `color` is `r mean(mean_color)`.
 
-Therefore, we know that we can take the means of a numeric variable and a logical vector, but not of a factor vector or a character vector.
+Therefore, we know that we can take the means of a numeric vector and a logical vector, but not of a factor vector or a character vector.
 
 
 #### Converting variables from one type to another
 
-```{r convert, eval = FALSE}
+```{r convert, warning = FALSE, results = 'hide'}
 as.numeric(df$on_time)
 as.numeric(df$zone)
 as.numeric(df$color)
